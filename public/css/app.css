@@ -1,5 +1,5 @@
 .content-welcome {
-  height: 95vh;
+  height: 100vh;
   opacity: 0.8;
 }
 
@@ -8,11 +8,19 @@
   color: white !important;
 }
 
-.content-welcome p {
-  color: #ff57ff;
+.content-welcome header p {
+  color: #ff57ff !important;
 }
 
 .content-welcome a {
   color: white !important;
+}
+
+.links:first-of-type:after {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.5);
 }
 

@@ -10,24 +10,23 @@
         @auth
             <li>
                 <p class="small m-0 mt-2 text-light">{{ Auth::user()->name }}</p>
-                <div>
-                    <a class="small" href="{{ route('logout') }}"
+                <p>
+                    <a class="small text-decoration-none" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
-                        @csrf
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                </div>
+                </p>
             </li>
         @endauth
     </ul> 
     <ul class="links ">
-        <li><a href="{{route('home')}}">Home</a></li>
-        <li><a href="generic.html">Generic</a></li>
+        <li><a class="{{Request::is('clients') || Request::is('clients/*') ? 'text-light' : ''}}" href="{{route('home')}}">Home</a></li>
+        <li><a class="{{Request::is('templates') || Request::is('templates/*') ? 'text-light' : ''}}" href="generic.html">Templates</a></li>
         <li><a href="elements.html">Elements</a></li>
     </ul>
     

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Client;
+use Illuminate\Support\Facades\Auth;
 
 class ClientsController extends Controller
 {
@@ -23,6 +25,54 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('clients.home', ['clients'=>auth()->user()->clients->reverse()->all()]);
+    }
+
+    public function create()
+    {
+        return view('clients.create');
+    }
+
+    public function store()
+    {
+        $this->validateClient();
+        $client = new Client(request([
+            'company', 'name', 'position', 'email'
+        ]));
+        $client->user_id = Auth::user()->id;
+        $client->save();
+        return redirect(route('home'))->with('message', 'New Client Added!');
+    }
+
+    public function show(Client $client)
+    {
+        return view('clients.show', ['client'=>$client]);
+    }
+    
+    public function edit(Client $client)
+    {
+        return view('clients.edit', ['client'=>$client]);
+    }
+
+    public function update(Client $client)
+    {
+        $client->update($this->validateClient());
+        return redirect(route('clients.show', $client))->with('message', 'Client Have Been Succesfully Updated!');
+    }
+
+    public function delete(Client $client)
+    {
+        $client->delete();
+        return redirect(route('home'))->with('message', 'Client Have Been Deleted Succesfully!');
+    }
+
+    protected function validateClient()
+    {
+        return request()->validate([
+            'company'=>'required',
+            'name'=>'',
+            'position'=>'required',
+            'email'=>'required|email'
+        ]);
     }
 }
