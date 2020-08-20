@@ -8,21 +8,21 @@ use Illuminate\Support\Facades\Auth;
 
 class ClientsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+    protected function validateClient()
+    {
+        return request()->validate([
+            'company'=>'required',
+            'name'=>'',
+            'position'=>'required',
+            'email'=>'required|email'
+        ]);
+    }
+
     public function index()
     {
         return view('clients.home', ['clients'=>auth()->user()->clients->reverse()->all()]);
@@ -66,13 +66,5 @@ class ClientsController extends Controller
         return redirect(route('home'))->with('message', 'Client Have Been Deleted Succesfully!');
     }
 
-    protected function validateClient()
-    {
-        return request()->validate([
-            'company'=>'required',
-            'name'=>'',
-            'position'=>'required',
-            'email'=>'required|email'
-        ]);
-    }
+   
 }

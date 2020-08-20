@@ -1,9 +1,11 @@
+@extends('layouts.app')
+
 @component('mail::message')
-# Introduction
+# Dear {{$responsibleName}},
 
-Dear {{$responsibleName}}, {{$responsiblePosition}} at {{$companyName}},
+{{$responsiblePosition}} at {{$companyName}},
 
-The body of your message.
+{{$content}}
 
 
 Thanks,<br>

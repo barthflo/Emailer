@@ -16,9 +16,10 @@ class ServicesPromotion extends Mailable
      *
      * @return void
      */
-    public function __construct(Client $client)
+    public function __construct(Client $client, $templatePath)
     {
         $this->client=$client;
+        $this->templatePath = $templatePath;
     }
 
     /**
@@ -28,10 +29,11 @@ class ServicesPromotion extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.template1')->with([
+        return $this->markdown($this->templatePath)->with([
             'companyName'=> $this->client->company,
             'responsibleName'=>$this->client->name,
-            'responsiblePosition'=>$this->client->position
+            'responsiblePosition'=>$this->client->position,
+            'content'=>$this->client->emails->first()->content
         ]);
     }
 }

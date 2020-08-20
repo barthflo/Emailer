@@ -3,7 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-//use App\User;
+use App\User;
+use App\Email;
 
 class Client extends Model
 {
@@ -12,5 +13,8 @@ class Client extends Model
     ];
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    public function emails(){
+        return $this->belongsToMany(Email::class);
     }
 }
