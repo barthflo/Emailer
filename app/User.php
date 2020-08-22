@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Client;
-use App\Email;
+use App\EmailTemplate;
 
 class User extends Authenticatable
 {
@@ -44,6 +44,6 @@ class User extends Authenticatable
         return $this->hasMany(Client::class);
     }
     public function emails(){
-        return $this->hasMany(Email::class);
+        return $this->hasMany(EmailTemplate::class);
     }
 }

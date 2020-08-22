@@ -27,11 +27,22 @@ Route::get('/clients/{client}', 'ClientsController@show')->name('clients.show');
 Route::get('clients/{client}/edit', 'ClientsController@edit')->name('clients.edit');
 Route::put('clients/{client}/edit', 'ClientsController@update')->name('clients.update');
 Route::delete('clients/{client}', 'ClientsController@delete')->name('clients.delete');
-Route::get('/clients/{client}/email', 'EmailsController@create')->name('emails.create');
-Route::post('/clients/{client}/email/send', 'EmailsController@store')->name('emails.send');
 
-Route::get('/logout', function(Request $request){
-    dd($request);
+Route::get('/clients/{client}/email', 'SendEmailsController@showSenderForm')->name('emails.show');
+Route::post('/clients/{client}/email/send', 'SendEmailsController@sendEmail')->name('emails.send');
+
+
+Route::get('/templates', 'TemplatesController@index')->name('templates.index');
+Route::get('/templates/create', 'TemplatesController@create')->name('templates.create');
+Route::post('/templates/create', 'TemplatesController@store')->name('templates.store');
+
+Route::get('/preview/{any}', function($any){
+    return request($any);
+})->where('any', '.*')->name('email.preview');
+
+
+Route::get('/logout', function(){
     Auth::logout();
     return redirect(route('welcome'))->with('message', 'You have been logged out');
 })->middleware('guest')->name('logout');
+

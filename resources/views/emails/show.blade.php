@@ -27,14 +27,20 @@
             </div>
             <select class="control" name="template-type" id="type">
                 <option value="">--Select Template--</option>
-                <option value="type1">Template 1</option>
+                @foreach ($client->emails as $email)
+                    <option value="{{$email->name}}">{{$email->name}}</option>
+                @endforeach  
             </select>
+
             @error('template-type')
                 <p style="color:red" class="bold alternate small">{{$message}}</p>
-                @enderror
+            @enderror
+
+            <a href="{{route('templates.create')}}"><label class="label" for="">Or create a new one</label></a>
             <div class="wrapper style2  bg-white">
                 <div class="align-center">
-                    <button class="button alt" type="submit">Send Email </button>
+                    <button class="button alt" name="action" value="send" type="submit">Send Email </button>
+                    <button class="button special" name="action" value="preview" type="submit">Preview </button>
                     <a class="button default" href="{{ route('home') }}">Return</a>
                 </div>
             </div>

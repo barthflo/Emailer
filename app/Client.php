@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-use App\Email;
+use App\EmailTemplate;
 
 class Client extends Model
 {
@@ -15,6 +15,11 @@ class Client extends Model
         return $this->belongsTo(User::class);
     }
     public function emails(){
-        return $this->belongsToMany(Email::class);
+        return $this->belongsToMany(EmailTemplate::class);
+    }
+    public function mailIsSent()
+    {
+        $this->sent=true;
+        return $this->save();
     }
 }

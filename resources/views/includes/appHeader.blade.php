@@ -26,8 +26,7 @@
     </ul> 
     <ul class="links ">
         <li><a class="{{Request::is('clients') || Request::is('clients/*') ? 'text-light' : ''}}" href="{{route('home')}}">Home</a></li>
-        <li><a class="{{Request::is('templates') || Request::is('templates/*') ? 'text-light' : ''}}" href="generic.html">Templates</a></li>
-        <li><a href="elements.html">Elements</a></li>
+        <li><a class="{{Request::is('templates') || Request::is('templates/*') ? 'text-light' : ''}}" href="{{route('templates.index')}}">Templates</a></li>
     </ul>
     
 </nav>

@@ -1,13 +1,20 @@
-@extends('layouts.app')
+@component('mail::message', ['username'=>$user->name, 'accountname'=>$accountname, 'logo'=>$logo])  
 
-@component('mail::message')
-# Dear {{$responsibleName}},
+# Dear {{$client->name ?? 'Responsible Name'}},   
 
-{{$responsiblePosition}} at {{$companyName}},
 
-{{$content}}
+{{$client->position ?? 'Responsible Position'}} at {{$client->name ?? 'Company Name'}},  
 
+@component('mail::panel')  
+
+- A list
+- goes
+- Here 
+
+{{$content ?? ''}}   
+@endcomponent 
 
 Thanks,<br>
 {{ config('mail.from.name') }}
 @endcomponent
+

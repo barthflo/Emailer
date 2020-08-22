@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmailsTable extends Migration
+class CreateEmailTemplatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,27 +13,30 @@ class CreateEmailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('emails', function (Blueprint $table) {
+        Schema::create('email_templates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('name')->unique;
-            $table->string('location_path');
+            $table->string('name')->unique();
+            $table->string('account')->nullable();
             $table->text('content');
+            $table->string('logo')->nullable();
+            $table->string('banner')->nullable();
+            
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
-        Schema::create('client_email', function (Blueprint $table) {
+        Schema::create('client_email_template', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id');
-            $table->foreignId('email_id');
+            $table->foreignId('email_template_id');
             $table->timestamps();
 
-            $table->unique(['client_id', 'email_id']);
+            $table->unique(['client_id', 'email_template_id']);
 
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-            $table->foreign('email_id')->references('id')->on('emails')->onDelete('cascade');
+            $table->foreign('email_template_id')->references('id')->on('email_templates')->onDelete('cascade');
         });
     }
 
@@ -44,6 +47,6 @@ class CreateEmailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('emails');
+        Schema::dropIfExists('email_templates');
     }
 }

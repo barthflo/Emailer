@@ -36,7 +36,7 @@
                 </header>
                 <div class="inner align-center">
                     <p>{{$client->position}}</p>
-                    <p><a href="{{ route('emails.create', $client) }}">{{$client->email}}</a></p>
+                    <p><a href="{{ route('emails.show', $client) }}">{{$client->email}}</a></p>
                 </div>
                 
             </div>

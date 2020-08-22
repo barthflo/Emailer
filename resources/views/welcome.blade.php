@@ -33,7 +33,7 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-            <a class="pl-2" href="{{route('home')}}">Go Back</a>
+            <a class="pl-2" href="{{url()->previous()}}">Go Back</a>
             @endguest
         </div>
     </div>    

@@ -19,14 +19,17 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @yield('style')       
+    @yield('style') 
+    @FilemanagerScript      
 </head>
 
 <body>
     <div id="app">
+   
     @yield('header')
-    
+
     @yield('content')
+
     </div>
     <!-- Scripts -->
     <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -34,6 +37,6 @@
     <script src="{{asset('js/skel.min.js')}}"></script>
     <script src="{{asset('js/util.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
-
+    @yield('scripts')
 </body>
 </html>
