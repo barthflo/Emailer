@@ -20,6 +20,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/test', function(){
+    return view('test');
+})->middleware('auth');
+
 Route::get('/clients', 'ClientsController@index')->name('home');
 Route::get('/clients/create', 'ClientsController@create')->name('clients.create');
 Route::post('/clients/create', 'ClientsController@store')->name('clients.store');
@@ -36,9 +40,9 @@ Route::get('/templates', 'TemplatesController@index')->name('templates.index');
 Route::get('/templates/create', 'TemplatesController@create')->name('templates.create');
 Route::post('/templates/create', 'TemplatesController@store')->name('templates.store');
 
-Route::get('/preview/{any}', function($any){
-    return request($any);
-})->where('any', '.*')->name('email.preview');
+Route::get('/preview/{template}', function(){
+
+})->name('email.preview');
 
 
 Route::get('/logout', function(){

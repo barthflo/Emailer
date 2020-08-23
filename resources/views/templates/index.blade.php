@@ -33,12 +33,12 @@
         <div class="box">
             <div class="content">
                 <header class="align-center">
-                    <h2><a style="color:black; text-transform:capitalize;" href="#">{{$template->name}}</a></h2>
+                    <h2><a style="color:black; text-transform:capitalize;" href="#">{{$template->template_name}}</a></h2>
                     <p>{{$template->created_at}}</p>
                     <p>Assigned to clients :</p>
                     <ul class="list-unstyled">
                         @forelse ($template->clients as $client)
-                            <li> {{ $client->name }} </li>
+                            <li><a href="{{route('clients.show', $client)}}"> {{ $client->name }} </a></li>
                         @empty 
                         <li>None</li> 
                         @endempty 
@@ -46,7 +46,7 @@
                     </ul>
                 </header>
                 <div class="inner align-center">
-                    <p>{{$template->excerpt()}}</p>
+                    <p>{!!$template->excerpt()!!}</p>
                 </div>  
             </div>
         </div>  

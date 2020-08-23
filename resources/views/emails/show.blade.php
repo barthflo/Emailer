@@ -23,16 +23,16 @@
         <form class="align-center" action="{{ route('emails.send', $client) }}" method="post">
             @csrf
             <div class="field">
-                <label class="label" for="template-type">Chose a template</label>
+                <label class="label" for="template_name">Chose a template</label>
             </div>
-            <select class="control" name="template-type" id="type">
+            <select class="control" name="template_name" id="template_name">
                 <option value="">--Select Template--</option>
                 @foreach ($client->emails as $email)
-                    <option value="{{$email->name}}">{{$email->name}}</option>
+                    <option value="{{$email->template_name}}">{{$email->template_name}}</option>
                 @endforeach  
             </select>
 
-            @error('template-type')
+            @error('template_name')
                 <p style="color:red" class="bold alternate small">{{$message}}</p>
             @enderror
 

@@ -39,7 +39,7 @@ class ClientsController extends Controller
         $client = new Client(request([
             'company', 'name', 'position', 'email'
         ]));
-        $client->user_id = Auth::user()->id;
+        $client->user_id = auth()->id();
         $client->save();
         return redirect(route('home'))->with('message', 'New Client Added!');
     }

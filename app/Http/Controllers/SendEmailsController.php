@@ -29,14 +29,14 @@ class SendEmailsController extends Controller
 
     public function sendEmail(Client $client)
     {   
-        request()->validate(['template-type'=>'required']);
+        request()->validate(['template_name'=>'required']);
         switch(request()->input('action')){
             case 'send':
-                Mail::to($client->email)->send(new ServicesPromotion($client, request('template-type')));
+                Mail::to($client->email)->send(new ServicesPromotion($client, request('template_name')));
                 $client->mailIsSent();
             break;
             case 'preview':
-                return new ServicesPromotion($client, request('template-type'));
+                return new ServicesPromotion($client, request('template_name'));
             break;
         }
         

@@ -28,9 +28,9 @@
             <div class="title text-center">
                     <h1>@yield('code', __('Oh no'))</h1>
                     <p>@yield('message')</p>
-                    <a href="{{ app('router')->has('home') ? route('home') : url('/') }}">
+                    <a href="{{ url()->previous() }}">
                         <button class="button alt mt-3 ">
-                            {{ __('Go Home') }}
+                            {{ __('Go Back') }}
                         </button>
                     </a>
             </div>

@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-//use App\User;
 use App\EmailTemplate;
+use App\Client_Email_Template;
 
 class TemplatesController extends Controller
 {
+    protected function validateTemplate()
+    {
+        return request()->validate([
+            'template_name'=>'required | unique:email_templates',
+            'content'=>'required',
+        ]);
+    }
     public function __construct()
     {
         $this->middleware('auth');
@@ -17,72 +23,48 @@ class TemplatesController extends Controller
 
     public function index()
     {
-    
-        return view('templates.index', ['templates'=>EmailTemplate::all()->where('user_id', Auth::user()->id)->sortBy('created_at')->reverse() ]);
+        return view('templates.index', ['templates'=>EmailTemplate::all()->where('user_id', auth()->id())->sortBy('created_at')->reverse() ]);
     }
 
     public function create()
     {
-        // Template name required, Logo optional, Company Account optional, Banner optional, Content required 
-        //dd(Storage::url('photos/'.Auth::user()->name.'/IMG_0001_tonemapped.jpg'));
         return view('templates.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        return $request;
-        //Validate requests
-        //Persists form requests in the database
-        //Generate new template file in views/emails ???
+       
+        $template = new EmailTemplate($this->validateTemplate());
+        $template->logo = request('logo');
+        $template->banner = request('banner');
+        $template->sender_account = request('sender_account');
+        $template->user_id = auth()->id();
+        $template->save();
+        
+        $clients = auth()->user()->clients->all();
+        foreach($clients as $client){
+            $client->emails()->attach($template->id);
+        };
+
         //Redirect to show
+        return redirect(route('templates.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

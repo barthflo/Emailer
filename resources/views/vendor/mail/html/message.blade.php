@@ -1,9 +1,9 @@
 @component('mail::layout')
 {{-- Header --}}
 @slot('header')
-@component('mail::header', ['url' => 'www.flobarthphotography.com', 'logo'=> $logo ])
+@component('mail::header', ['url' => 'https://www.flobarthphotography.com', 'logo'=> $logo, 'banner' =>$banner ])
 @if (! $logo)
-{{ isset($accountname) ? $accountname : $username }}   
+{{ isset($accountname) ? $accountname : $user->name }}   
 @endif
 @endcomponent
 @endslot
@@ -23,7 +23,7 @@
 {{-- Footer --}}
 @slot('footer')
 @component('mail::footer')
-© {{ date('Y') }} {{ isset($accountname) ? $accountname : $username }}. @lang('All rights reserved.')
+© {{ date('Y') }} {{ isset($accountname) ? $accountname : $user->name }}. @lang('All rights reserved.')
 @endcomponent
 @endslot
 @endcomponent

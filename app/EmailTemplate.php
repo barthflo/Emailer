@@ -3,10 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Support\Str;
 
 class EmailTemplate extends Model
 {
+    protected $fillable = [
+        'template_name', 'content', 'user_id' 
+    ];
+
     public function excerpt()
     {
         return Str::limit($this->content, 1000);
