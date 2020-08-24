@@ -3,17 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 use App\EmailTemplate;
-use App\Client_Email_Template;
 
 class TemplatesController extends Controller
 {
     protected function validateTemplate()
     {
         return request()->validate([
-            'template_name'=>'required | unique:email_templates',
+            'user_id'=>'required',
+            'template_name'=> Rule::unique('email_templates', 'template_name')->where(function($query){
+                return $query->where('user_id', request('user_id'));
+            }),
+            'sender_account'=>'',
             'content'=>'required',
+            'logo'=>'',
+            'banner'=>''
         ]);
     }
     public function __construct()
@@ -31,22 +37,14 @@ class TemplatesController extends Controller
         return view('templates.create');
     }
 
-    public function store(Request $request)
+    public function store()
     {
-       
-        $template = new EmailTemplate($this->validateTemplate());
-        $template->logo = request('logo');
-        $template->banner = request('banner');
-        $template->sender_account = request('sender_account');
-        $template->user_id = auth()->id();
-        $template->save();
-        
-        $clients = auth()->user()->clients->all();
-        foreach($clients as $client){
-            $client->emails()->attach($template->id);
-        };
-
-        //Redirect to show
+        $template = EmailTemplate::create($this->validateTemplate());
+        if ($template->clientExists()){
+            foreach($template->clientExists() as $client){
+                $client->emails()->attach($template->id);
+            };
+        }
         return redirect(route('templates.index'));
     }
 

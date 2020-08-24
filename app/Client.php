@@ -9,7 +9,7 @@ use App\EmailTemplate;
 class Client extends Model
 {
     protected $fillable = [
-        'company', 'name', 'position','email' 
+        'company', 'name', 'position','email', 'user_id' 
     ];
     public function user(){
         return $this->belongsTo(User::class);
@@ -21,5 +21,10 @@ class Client extends Model
     {
         $this->sent=true;
         return $this->save();
+    }
+
+    public function templateExists()
+    {
+        return auth()->user()->emails->all();
     }
 }

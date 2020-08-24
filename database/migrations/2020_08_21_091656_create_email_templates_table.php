@@ -16,13 +16,16 @@ class CreateEmailTemplatesTable extends Migration
         Schema::create('email_templates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('template_name')->unique();
+            $table->string('template_name');
             $table->string('sender_account')->nullable();
             $table->text('content');
+            $table->string('website_url')->nullable();
             $table->string('logo')->nullable();
             $table->string('banner')->nullable();
             
             $table->timestamps();
+
+            $table->unique(['template_name', 'user_id']);
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

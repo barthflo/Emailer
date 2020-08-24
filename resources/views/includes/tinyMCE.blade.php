@@ -6,12 +6,13 @@
 
         tinymce.init({
             selector: 'textarea',
+            path_absolute:'/',
             height: 200,
             plugins: ['image link code'],
             toolbar: 'styleselect bold italic underline | image | code | undo redo | alignleft aligncenter alignright | bullist numlist | outdent indent ',
             branding: false,
             file_browser_callback: filemanager.tinyMceCallback,
-            relative_paths: false
+            relative_urls: false
         });
     };
   </script>

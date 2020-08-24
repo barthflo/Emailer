@@ -35,12 +35,12 @@ class ClientsController extends Controller
 
     public function store()
     {
-        $this->validateClient();
-        $client = new Client(request([
-            'company', 'name', 'position', 'email'
-        ]));
-        $client->user_id = auth()->id();
-        $client->save();
+        $client = Client::create(array_merge($this->validateClient(), ['user_id'=>auth()->id()]));
+        if ($client->templateExists()){
+            foreach($client->templateExists() as $template){
+                $template->clients()->attach($client->id);
+            }
+        }
         return redirect(route('home'))->with('message', 'New Client Added!');
     }
 

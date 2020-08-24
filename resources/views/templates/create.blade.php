@@ -23,7 +23,7 @@
         <p class="text-center text-muted font-italic">The fields mark with an * are required</p>
         <form class="align-center" action="{{ route('templates.store') }}" method="post">
             @csrf
-
+            <input id="user_id" type="hidden" name="user_id" value="{{ auth()->id() }}">
             <div class="field">
                 <label class="label" for="template_name">Template Name :*</label>
             </div>
@@ -32,6 +32,9 @@
             </div>
                 @error('template_name')
                 <p style="color:red" class="bold alternate small">{{$message}}</p>
+                @enderror
+                @error('user_id')
+                <p style="color:red" class="bold alternate small">Template name already used</p>
                 @enderror
             <div class="field">
                 <label class="label" for="sender_account">From :</label>

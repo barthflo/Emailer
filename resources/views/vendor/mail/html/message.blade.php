@@ -1,7 +1,7 @@
 @component('mail::layout')
 {{-- Header --}}
 @slot('header')
-@component('mail::header', ['url' => 'https://www.flobarthphotography.com', 'logo'=> $logo, 'banner' =>$banner ])
+@component('mail::header', ['url' => $website_url ?? '', 'logo'=> $logo, 'banner' =>$banner ])
 @if (! $logo)
 {{ isset($accountname) ? $accountname : $user->name }}   
 @endif

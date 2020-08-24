@@ -26,4 +26,8 @@ class EmailTemplate extends Model
     {
         return $this->belongsToMany(Client::class);
     }
+
+    public function clientExists(){
+        return auth()->user()->clients->all();
+    }
 }

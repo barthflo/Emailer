@@ -6,9 +6,11 @@
 
 @component('mail::panel')  
 
-{!! $content ?? '' !!}   
+{!! $content ?? 'content here' !!}   
 @endcomponent 
-
+@component('mail::subcopy')
+{!! $content ?? 'subcopy here' !!}
+@endcomponent
 Thanks, 
 
 {{ $accountname ?? $user->name }}
