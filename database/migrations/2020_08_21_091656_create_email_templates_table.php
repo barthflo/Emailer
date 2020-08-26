@@ -20,6 +20,7 @@ class CreateEmailTemplatesTable extends Migration
             $table->string('sender_account')->nullable();
             $table->text('content');
             $table->string('website_url')->nullable();
+            $table->string('social_media')->nullable();
             $table->string('logo')->nullable();
             $table->string('banner')->nullable();
             

@@ -24,7 +24,7 @@ class SendEmailsController extends Controller
 
     public function showSenderForm(Client $client)
     {
-        return view('emails.show', ['client'=>$client]);
+        return view('sendEmails.show', ['client'=>$client]);
     }
 
     public function sendEmail(Client $client)
@@ -34,13 +34,12 @@ class SendEmailsController extends Controller
             case 'send':
                 Mail::to($client->email)->send(new ServicesPromotion($client, request('template_name')));
                 $client->mailIsSent();
+                return redirect(route('home'))->with('message', 'Your Email Have Been Sent!');
             break;
             case 'preview':
-                return new ServicesPromotion($client, request('template_name'));
+                return view('templates.preview', ['preview'=>new ServicesPromotion($client, request('template_name'))]);
             break;
-        }
-        
-        return redirect(route('home'))->with('message', 'Your Email Have Been Sent!');
+        }  
     }
 
 }

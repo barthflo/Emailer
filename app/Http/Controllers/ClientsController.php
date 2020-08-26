@@ -37,7 +37,7 @@ class ClientsController extends Controller
     {
         $client = Client::create(array_merge($this->validateClient(), ['user_id'=>auth()->id()]));
         if ($client->templateExists()){
-            foreach($client->templateExists() as $template){
+            foreach ($client->templateExists() as $template){
                 $template->clients()->attach($client->id);
             }
         }

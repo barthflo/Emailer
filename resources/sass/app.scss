@@ -34,3 +34,11 @@
 .control .search{
     width:50px;
 }
+
+.template-show p{
+    text-transform: none !important;
+}
+
+.template-show p:after{
+    background-color:transparent !important;
+  }

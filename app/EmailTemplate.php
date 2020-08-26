@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class EmailTemplate extends Model
 {
     protected $fillable = [
-        'template_name', 'content', 'user_id' 
+        'template_name', 'content', 'user_id', 'logo', 'website_url', 'social_media', 'banner','sender_account' 
     ];
 
     public function excerpt()
@@ -30,4 +30,5 @@ class EmailTemplate extends Model
     public function clientExists(){
         return auth()->user()->clients->all();
     }
+
 }

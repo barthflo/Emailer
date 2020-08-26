@@ -1,7 +1,7 @@
 @component('mail::layout')
 {{-- Header --}}
 @slot('header')
-@component('mail::header', ['url' => $website_url ?? '', 'logo'=> $logo, 'banner' =>$banner ])
+@component('mail::header', ['url' => $url, 'logo'=> $logo, 'banner' =>$banner ])
 @if (! $logo)
 {{ isset($accountname) ? $accountname : $user->name }}   
 @endif
@@ -22,7 +22,7 @@
 
 {{-- Footer --}}
 @slot('footer')
-@component('mail::footer')
+@component('mail::footer', ['social_media'=>$social_media])
 © {{ date('Y') }} {{ isset($accountname) ? $accountname : $user->name }}. @lang('All rights reserved.')
 @endcomponent
 @endslot

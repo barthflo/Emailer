@@ -27,4 +27,5 @@ class Client extends Model
     {
         return auth()->user()->emails->all();
     }
+    
 }

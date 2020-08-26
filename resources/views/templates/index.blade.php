@@ -5,11 +5,10 @@
 @endsection
 
 @section('header')
-    @include('includes/appHeader')
+@include('includes/appHeader')
 @endsection
 
 @section('content')
-
 <section id="One" class="wrapper style3">
     <div class="inner">
         <header class="align-center">
@@ -33,7 +32,7 @@
         <div class="box">
             <div class="content">
                 <header class="align-center">
-                    <h2><a style="color:black; text-transform:capitalize;" href="#">{{$template->template_name}}</a></h2>
+                    <h2><a style="color:black; text-transform:capitalize;" href="{{route('templates.show', $template)}}">{{$template->template_name}}</a></h2>
                     <p>{{$template->created_at}}</p>
                     <p>Assigned to clients :</p>
                     <ul class="list-unstyled">
@@ -53,3 +52,4 @@
         @endforeach 
     </div>
 </section>
+@endsection

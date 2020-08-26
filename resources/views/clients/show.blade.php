@@ -36,14 +36,16 @@
                 <p><a href="{{ route('emails.show', $client) }}">{{$client->email}}</a></p>
                 </div>
             </div>
-            <div class="d-flex justify-content-center">
-                <a class="button alt" href="{{ route('clients.edit', $client) }}">Edit the details</a>
-                <a class="button default" href="{{ route('home') }}">Return</a>
-                <form action="{{ route('clients.delete', $client)}}" method="post" id="delete">
-                @csrf
-                @method("delete")
-                    <button class="button special" type="submit">Remove</button>
-                </form>
+            <div class="wrapper style2  bg-white">
+                <div class="align-center">
+                    <a class="button alt" href="{{ route('clients.edit', $client) }}">Edit the details</a>
+                    <a class="button default" href="{{ route('home') }}">Return</a>
+                    <form class="d-inline" action="{{ route('clients.delete', $client)}}" method="post" id="delete">
+                    @csrf
+                    @method("delete")
+                        <button class="button special" type="submit">Remove</button>
+                    </form>
+                </div>
             </div>
         </div>  
     </div>

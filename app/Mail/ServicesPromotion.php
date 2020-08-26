@@ -32,17 +32,14 @@ class ServicesPromotion extends Mailable
     public function build()
     {   
         
-        return $this->markdown('emails.templates.template')->with([
+        return $this->markdown('templates.base')->with([
             'content'=>$this->template->content,
             'accountname'=>$this->template->sender_account,
             'logo'=>$this->template->logo,
             'banner'=>$this->template->banner,
+            'url'=>$this->template->website_url,
+            'social_media'=>$this->template->social_media
         ]);
-        // return $this->view('emails.templates.templated')->with([
-        //     'banner'=>$this->template->banner,
-        //     'logo'=>$this->template->logo,
-        //     'accountname'=>$this->template->sender_account,
-        //     'content'=>$this->template->content
-        // ]);
+     
     }
 }

@@ -1,4 +1,4 @@
-@component('mail::message', ['username'=>$user->name, 'accountname'=>$accountname,'banner'=>$banner, 'logo'=>$logo, 'user'=>$user])   
+@component('mail::message', ['username'=>$user->name, 'accountname'=>$accountname,'banner'=>$banner, 'logo'=>$logo, 'user'=>$user, 'url'=>$url, 'social_media'=>$social_media])   
 
 # Dear {{$client->name ?? 'Responsible Name'}},   
 
@@ -8,9 +8,7 @@
 
 {!! $content ?? 'content here' !!}   
 @endcomponent 
-@component('mail::subcopy')
-{!! $content ?? 'subcopy here' !!}
-@endcomponent
+
 Thanks, 
 
 {{ $accountname ?? $user->name }}

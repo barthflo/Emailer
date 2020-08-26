@@ -20,10 +20,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/test', function(){
-    return view('test');
-})->middleware('auth');
-
 Route::get('/clients', 'ClientsController@index')->name('home');
 Route::get('/clients/create', 'ClientsController@create')->name('clients.create');
 Route::post('/clients/create', 'ClientsController@store')->name('clients.store');
@@ -39,10 +35,10 @@ Route::post('/clients/{client}/email/send', 'SendEmailsController@sendEmail')->n
 Route::get('/templates', 'TemplatesController@index')->name('templates.index');
 Route::get('/templates/create', 'TemplatesController@create')->name('templates.create');
 Route::post('/templates/create', 'TemplatesController@store')->name('templates.store');
-
-Route::get('/preview/{template}', function(){
-
-})->name('email.preview');
+Route::get('/templates/{template}', 'TemplatesController@show')->name('templates.show');
+Route::get('/templates/{template}/edit', 'TemplatesController@edit')->name('templates.edit');
+Route::put('/templates/{template}/edit', 'TemplatesController@update')->name('templates.update');
+Route::delete('/templates/{template}', 'TemplatesController@delete')->name('templates.delete');
 
 
 Route::get('/logout', function(){
