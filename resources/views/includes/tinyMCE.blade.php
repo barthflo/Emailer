@@ -6,7 +6,7 @@
         
         tinymce.init({
             selector: 'textarea',
-            path_absolute:'http://flobarth.local/filemanager',
+            path_absolute:'emailer.flobarthphotography.com/',
             height: 200,
             plugins: ['image link code'],
             toolbar: 'styleselect bold italic underline | image | code | undo redo | alignleft aligncenter alignright justify | bullist numlist | outdent indent ',
