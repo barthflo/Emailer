@@ -6,7 +6,7 @@
 @if ($url)
     <a href="https://{{ $url }}" target="_blank" style="display: inline-block;">
     @if ($logo)
-    <img class="logo" src="{{ $logo }}" alt="Logo">   
+    <img class="logo" src="emailer.flobarthphotography.com/{{ $logo }}" alt="Logo">   
     @else
     <h1 class="text-center">{{ $slot }}</h1>
     @endif      
@@ -14,7 +14,7 @@
 
 @else 
     @if ($logo)
-    <img class="logo" src="{{ $logo }}" alt="Logo">   
+    <img class="logo" src="emailer.flobarthphotography.com/{{ $logo }}" alt="Logo">   
     @else  
     <h1 class="text-center">{{ $slot }}</h1>
     @endif 
