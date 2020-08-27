@@ -1,6 +1,6 @@
 <?php
 return [
-    'base_route'      => 'http://flobarth.local/admin/filemanager',
+    'base_route'      => 'admin/filemanager',
     'middleware'      => ['web', 'auth'],
     'allow_format'    => 'jpeg,jpg,png,gif,webp',
     'max_size'        => 5000,
