@@ -30,8 +30,10 @@ class ServicesPromotion extends Mailable
      * @return $this
      */
     public function build()
-    {   
-        return $this->markdown('templates.base')->with([
+    {  
+        
+        return $this->from(auth()->user()->email, $this->template->sender_account)
+                    ->markdown('templates.base')->with([
                         'content'=>$this->template->content,
                         'accountname'=>$this->template->sender_account,
                         'logo'=>$this->template->logo,

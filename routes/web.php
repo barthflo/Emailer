@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/phpinfo', function(){
+Route::get('/phpinfo/{address}/{name}', function($address, $name){
+    config(['mail.from'=>['address'=>$address,
+                            'name'=>$name
+                        ]
+            ]);
+    return config('mail.from');
     return phpinfo(); 
 });
 
