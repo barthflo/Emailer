@@ -32,7 +32,7 @@ class ServicesPromotion extends Mailable
     public function build()
     {   
         //dd($this->user->email);
-        return $this->from(['address'=>$this->user->email,'name'=>$this->template->sender_account, ])
+        return $this->from(['address'=>$this->user->email ])
                     ->markdown('templates.base')->with([
                         'content'=>$this->template->content,
                         'accountname'=>$this->template->sender_account,
