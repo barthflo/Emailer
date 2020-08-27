@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/phpinfo', function(){
+    return phpinfo(); 
+});
 
 Route::get('/', function () {
     return view('welcome');
