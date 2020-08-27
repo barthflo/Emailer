@@ -6,13 +6,15 @@
         
         tinymce.init({
             selector: 'textarea',
-            path_absolute:'emailer.flobarthphotography.com/',
+            path_absolute:'/public/',
             height: 200,
             plugins: ['image link code'],
             toolbar: 'styleselect bold italic underline | image | code | undo redo | alignleft aligncenter alignright justify | bullist numlist | outdent indent ',
             branding: false,
             file_browser_callback: filemanager.tinyMceCallback,
-            relative_urls: false
+            relative_urls : false,
+            remove_script_host : false,
+            convert_urls : true,
         });  
     };
   </script>
@@ -23,13 +25,15 @@
             
         tinymce.init({
             selector: 'textarea',
-            path_absolute:'/',
+            path_absolute:'',
             height: 200,
             plugins: ['image link code'],
             toolbar: 'styleselect bold italic underline | image | code | undo redo | alignleft aligncenter alignright | bullist numlist | outdent indent ',
             branding: false,
             file_browser_callback: filemanager.tinyMceCallback,
-            relative_urls: false
+            relative_urls : false,
+            remove_script_host : false,
+            convert_urls : true,
         }); 
         
         var template = {!! json_encode($template ->toArray()) !!};
