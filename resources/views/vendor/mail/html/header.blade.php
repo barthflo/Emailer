@@ -1,7 +1,7 @@
 <tr>
 <td class="header ">
 @if ($banner)
-<img class="banner" src="{{ $banner }}" alt="banner">    
+<img class="header-img" src="{{ $banner }}" alt="banner">    
 @endif
 @if ($url)
     <a href="https://{{ $url }}" target="_blank" style="display: inline-block;">
