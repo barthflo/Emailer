@@ -21,7 +21,7 @@ class Preview extends Mailable
     public function __construct($template)
     {
         $this->user = auth()->user();
-        $this->client = factory(Client::class)->make(['user_id'=>auth()->id(), 'company'=>'Company Name', 'position'=>'Position Title', 'name'=>'Responsible Name']);
+        $this->client = new Client(['user_id'=>auth()->id(), 'company'=>'Company Name', 'position'=>'Position Title', 'name'=>'Responsible Name', 'email'=>'Client Email']);
         $this->template = collect($template);
     }
 
