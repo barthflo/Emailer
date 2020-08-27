@@ -32,6 +32,7 @@ class SendEmailsController extends Controller
         request()->validate(['template_name'=>'required']);
         switch(request()->input('action')){
             case 'send':
+                
                 Mail::to($client->email)->send(new ServicesPromotion($client, request('template_name')));
                 $client->mailIsSent();
                 return redirect(route('home'))->with('message', 'Your Email Have Been Sent!');
