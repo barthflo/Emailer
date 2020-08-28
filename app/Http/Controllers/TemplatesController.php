@@ -97,7 +97,7 @@ class TemplatesController extends Controller
                 return redirect(route('templates.show', $template));
             break;
             case 'preview':
-                return view('templates.preview', ['preview'=>new Preview($this->validateUpdate($template->id)), 'template'=>$template]);
+                return view('templates.preview', ['preview'=>new Preview(request()), 'template'=>$template]);
             break;
                     
         }

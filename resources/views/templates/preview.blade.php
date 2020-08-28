@@ -11,13 +11,16 @@
 @section('content')
 {!!$preview!!}
 @if (! (Request::is('templates/*/edit') || Request::is('templates/create')))
-<div class="wrapper style2 py-0 bg-white">
-    <div class="d-flex justify-content-center">
-        <a class="button default" href="{{url()->previous()}}">Return</a>
+<div class="wrapper style3">
+    <div class="inner">
+        <div class="d-flex justify-content-center">
+            <a class="button alt" href="{{url()->previous()}}">Return</a>
+        </div>
     </div>
 </div>
 @endif
-@if (Request::is('templates/*/edit'))
+
+{{-- @if (Request::is('templates/*/edit'))
 <div class="wrapper style2 py-0 bg-white">
     <div class="d-flex justify-content-center">
         <form class="align-center" action="{{ route('templates.update', $template) }}" method="post">
@@ -27,6 +30,6 @@
         </form>
     </div>
 </div> 
-@endif
+@endif --}}
 @endsection
 

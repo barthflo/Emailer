@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use SendGrid\Mail\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,24 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/phpinfo/{address}/{name}', function($address, $name){
-    config(['mail.from'=>['address'=>$address,
-                            'name'=>$name
-                        ]
-            ]);
-    return phpinfo(); 
+Route::get('/sendgrid', function(){
+    $email = new Mail();
+$email->setFrom('flrnt.barth@gmail.com', 'Flo Barth Photography');
+$email->setSubject("Sending with Twilio SendGrid is Fun");
+$email->addTo("flrnt.barth@gmail.com", "Example User");
+$email->addContent("text/plain", "and easy to do anywhere, even with PHP");
+$email->addContent(
+    "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
+);
+$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+try {
+    $response = $sendgrid->send($email);
+    print $response->statusCode() . "\n";
+    print_r($response->headers());
+    print $response->body() . "\n";
+} catch (Exception $e) {
+    echo 'Caught exception: '. $e->getMessage() ."\n";
+}
 });
 
 Route::get('/', function () {
