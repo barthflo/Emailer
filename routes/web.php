@@ -18,7 +18,6 @@ Route::get('/phpinfo/{address}/{name}', function($address, $name){
                             'name'=>$name
                         ]
             ]);
-    return config('mail.from');
     return phpinfo(); 
 });
 
