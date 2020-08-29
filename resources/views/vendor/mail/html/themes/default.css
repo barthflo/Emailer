@@ -7,7 +7,10 @@ body *:not(html):not(style):not(br):not(tr):not(code) {
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     position: relative;
 }
-
+body{
+    padding:1em;
+    background:white;
+}
 body .preview {
     -webkit-text-size-adjust: none;
     background-color: #ffffff;
@@ -15,7 +18,6 @@ body .preview {
     height: 100%;
     line-height: 1.4;
     margin: 0;
-    padding: 1em;
     width: 100% !important;
 }
 
@@ -28,7 +30,7 @@ blockquote {
 }
 
 a {
-    color: #a338d4 !important;
+    color: #bd5214 !important;
 }
 
 a img {
@@ -100,6 +102,7 @@ img {
 .header {
     padding: 25px;
     text-align: center;
+    background-color:white !important;
 }
 
 .header a {
@@ -123,8 +126,8 @@ img {
     -premailer-cellspacing: 0;
     -premailer-width: 100%;
     background-color: #edf2f7;
-    border-bottom: 1px solid #edf2f7;
-    border-top: 1px solid #edf2f7;
+    /* border-bottom: 1px solid #edf2f7;
+    border-top: 1px solid #edf2f7; */
     margin: 0;
     padding: 0;
     width: 100%;
@@ -206,7 +209,9 @@ table {
     margin: 0;
     padding: 10px 0;
 }
-
+.table tr{
+    background-color:white !important;
+}
 .content-cell {
     max-width: 100vw;
     padding: 0 32px 32px;
@@ -269,11 +274,13 @@ table {
 
 .panel-content {
     background-color: #ffffff;
-    color: #718096;
+    /* color: #718096; */
     padding: 16px;
 }
-
-.panel-content p {
+.panel img{
+    object-fit: contain;
+}
+.panel-content p, ul, ol {
     color: #718096;
 }
 

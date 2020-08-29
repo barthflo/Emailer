@@ -14,7 +14,8 @@
 <div class="wrapper style3">
     <div class="inner">
         <div class="d-flex justify-content-center">
-            <a class="button alt" href="{{url()->previous()}}">Return</a>
+            <a class="button alt mr-1" href="{{url()->previous()}}">Return</a>
+            <a class="button special mr-1" href="{{route('templates.edit', $template)}}">Modify</a>
         </div>
     </div>
 </div>

@@ -62,17 +62,19 @@
                 <label class="label" for="logo">Add a logo :</label>
             </div>
             <div class="control d-flex">
-                <input class="input align-center" type="text" name="logo" id="logo" value="{{ old('logo') }}">
-                <button class="p-0 search button special" type="button" onclick="filemanager.selectFile('logo')"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <input  class="input align-center" type="text" name="logo" id="logo" value="{{ old('logo') }}">
+                <a id="logoctl" class="p-0 search button special" data-input="logo" data-preview="logoHolder"><i class="fa fa-search" aria-hidden="true"></i></a>
             </div>
+            <img id="logoHolder" style="margin-top:15px;max-height:100px;">
 
             <div class="field">
                 <label class="label" for="banner">Add a banner image :</label>
             </div>
             <div class="control d-flex">
                 <input class="input align-center" type="text" name="banner" id="banner" value="{{ old('banner') }}">
-                <button class="p-0 search button special" type="button" onclick="filemanager.selectFile('banner')"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <a id="bannerctl" class="p-0 search button special" data-input="banner" data-preview="bannerHolder"><i class="fa fa-search" aria-hidden="true"></i></a>
             </div>
+            <img id="bannerHolder" style="margin-top:15px;max-height:100px;">
 
             <div class="field">
                 <label class="label" for="content">Content :*</label>

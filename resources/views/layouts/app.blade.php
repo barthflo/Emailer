@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('style') 
-    @FilemanagerScript      
+       
 </head>
 
 <body>
@@ -32,7 +33,7 @@
 
     </div>
     <!-- Scripts -->
-    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script> 
     <script src="{{asset('js/jquery.scrollex.min.js')}}"></script>
     <script src="{{asset('js/skel.min.js')}}"></script>
     <script src="{{asset('js/util.js')}}"></script>

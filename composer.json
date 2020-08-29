@@ -13,13 +13,12 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
-        "haruncpi/laravel-simple-filemanager": "^1.0",
         "intervention/image": "^2.5",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "league/flysystem-aws-s3-v3": "~1.0",
-        "sendgrid/sendgrid": "^7.8"
+        "unisharp/laravel-filemanager": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

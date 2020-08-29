@@ -4,7 +4,7 @@
 <tr>
 <td class="content-cell" align="center">
     @if ($social_media)
-    <a href="{{$social_media}}" target="_blank"><small>Follow me on {{ $social_media }}</small></a>  
+    <small class="font-italic">Follow me on <br><a href="https://{{$social_media}}" target="_blank">{{ $social_media }}</a></small>  
     @endif
     
 {{ Illuminate\Mail\Markdown::parse($slot) }}

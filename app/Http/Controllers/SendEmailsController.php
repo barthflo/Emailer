@@ -37,7 +37,7 @@ class SendEmailsController extends Controller
                 return redirect(route('home'))->with('message', 'Your Email Have Been Sent!');
             break;
             case 'preview':
-                return view('templates.preview', ['preview'=>new ServicesPromotion($client, request('template_name'))]);
+                return view('templates.preview', ['preview'=>new ServicesPromotion($client, request('template_name')), 'template'=>$client->emails->where('template_name', request('template_name'))->first(), 'client'=>$client]);
             break;
         }  
     }
